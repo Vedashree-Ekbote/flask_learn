@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{%block body%}
+   
+<div class="container">
+<h2>Add Tasks Here!</h2>
+<form action='/' method='POST'>
+  <div class="mb-3">
+    <label for="TODO" class="form-label">Enter Task Title</label>
+    <input type="text" name="title" class="form-control" id="title">
+  </div>
+  <div class="mb-3">
+    <label for="TODO Description" class="form-label">Description</label>
+    <input type="text" name="desc" class="form-control" id="desc">
+  </div>
+  <button type="submit" class="btn btn-outline-dark">ADD</button>
+</form>
+</div>
+<div class="container my-3">
+     {% if allTodo|length == 0%}
+        Add Tasks
+   
+    {%else%}
+     <table class="table">
+    <tbody>
+    <thead>
+    <tr>
+      <th scope="col">Sr No</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">DateTime</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+    {% for todo in allTodo%}
+    <tr>
+      <th scope="row">{{loop.index}}</th>
+      <td>{{todo.title}}</td>
+      <td>{{todo.desc}}</td>
+      <td>{{todo.date_created}}</td>
+      <td>
+      <a href="/delete/{{todo.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Done</button>
+      <a href="/update/{{todo.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Edit</button></td>
+    </tr>
+      </tbody>
+
+    {% endfor %}
+      {%endif%}
+      </table>
+</div>
+
+{%endblock body%}

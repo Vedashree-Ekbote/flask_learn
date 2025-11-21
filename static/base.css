@@ -1,0 +1,10 @@
+body{
+    background-color:transparent;
+}
+img {
+  border-radius: 4px;
+  width: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 2px solid black;
+}
