@@ -17,10 +17,6 @@ def create_app():
     with app.app_context():
         db.create_all()
     
-    print("\nRegistered Routes:")
-    for rule in app.url_map.iter_rules():
-        print(rule, "->", rule.endpoint)
-        print()
     return app
 
 if __name__ == "__main__":
